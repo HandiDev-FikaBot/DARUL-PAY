@@ -3,186 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Metode Pembayaran - DarulzXD</title>
+  <title>Web Payment DarulzXD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #e0ecff, #f6f8fa);
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #eef3f7, #f9fafe);
+      color: #333;
+      padding: 30px;
     }
 
     .card {
-      background: #ffffff;
-      padding: 30px 25px;
+      max-width: 600px;
+      background: #fff;
+      margin: auto;
+      padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 500px;
-      animation: fadeInUp 0.8s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
+    h1 {
       text-align: center;
-      color: #333;
-      margin-bottom: 30px;
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: #1f2937;
     }
 
-    .payment {
-      margin-bottom: 20px;
-    }
-
-    .label {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #444;
+    .info {
+      background: #e9f4ff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      margin: 10px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .number {
-      background: #f3f3f3;
-      border-radius: 10px;
-      padding: 10px 15px;
-      margin-top: 5px;
       font-size: 1rem;
-      color: #111;
-      letter-spacing: 0.5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
-    .copy-btn {
+    .info button {
       background: #007bff;
-      color: white;
-      border: none;
+      color: #fff;
       padding: 6px 12px;
+      border: none;
       border-radius: 8px;
-      font-size: 0.85rem;
       cursor: pointer;
-      margin-left: 10px;
+      transition: 0.3s;
+      font-size: 0.85rem;
+    }
+
+    .info button:hover {
+      background: #0056d2;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .btn-group button {
+      flex: 1;
+      padding: 10px;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
       transition: 0.3s;
     }
 
-    .copy-btn:hover {
-      background: #0056b3;
-    }
+    #qrisBtn { background: #00b894; }
+    #saluranBtn { background: #6366f1; }
+    #logBtn { background: #374151; }
 
-    .qris {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .qris-btn, .download-btn {
-      background: linear-gradient(to right, #28a745, #218838);
-      border: none;
-      color: white;
-      font-size: 1rem;
-      padding: 12px 25px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .qris-btn:hover, .download-btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(to right, #218838, #1e7e34);
+    .btn-group button:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
     }
 
     .qris-img {
       display: none;
-      margin-top: 20px;
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      animation: zoomIn 0.4s ease;
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    @keyframes zoomIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
+    .download-link {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .download-link button {
+      background: #ff7675;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .runtime {
+      background: #f0faff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 25px;
+      color: #666;
+    }
+
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .log {
+      display: none;
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 25px;
+      font-size: 0.9rem;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: inset 0 0 8px #000;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h2>💸 Metode Pembayaran</h2>
+<div class="card">
+  <h1>💸 Website Payment DarulzXD</h1>
 
-    <div class="payment">
-      <div class="label">DANA</div>
-      <div class="number">
-        <span id="dana">087890174423</span>
-        <button class="copy-btn" onclick="copyText('dana')">Salin</button>
-      </div>
-    </div>
+  <div class="info"><span>💸 DANA</span><span id="dana">087890174423 <button onclick="copy('dana')">Salin</button></span></div>
+  <div class="info"><span>🌊 GoPay</span><span id="gopay">087884058288 <button onclick="copy('gopay')">Salin</button></span></div>
+  <div class="info"><span>🌸 OVO</span><span id="ovo">087884058288 <button onclick="copy('ovo')">Salin</button></span></div>
 
-    <div class="payment">
-      <div class="label">GoPay</div>
-      <div class="number">
-        <span id="gopay">087884058288</span>
-        <button class="copy-btn" onclick="copyText('gopay')">Salin</button>
-      </div>
-    </div>
-
-    <div class="payment">
-      <div class="label">OVO</div>
-      <div class="number">
-        <span id="ovo">087884058288</span>
-      <button class="copy-btn" onclick="copyText('dana')">Salin</button>
-      </div>
-    </div>
-
-    <div class="qris">
-      <button id="qrisToggle" class="qris-btn" onclick="toggleQRIS()">📷 Tampilkan QRIS</button>
-      <img id="qris-img" class="qris-img" src="https://files.catbox.moe/zgjadx.jpeg" alt="QRIS All Payment">
-      <br>
-      <a id="downloadBtn" href="https://files.catbox.moe/zgjadx.jpeg" download="QRIS_FikaDev.jpg" style="display: none;">
-        <button class="download-btn">⬇️ Download QRIS</button>
-      </a>
-    </div>
+  <div class="btn-group">
+    <button id="qrisBtn" onclick="toggleQRIS()">📷 Tampilkan QRIS</button>
+    <button id="saluranBtn" onclick="window.open('https://whatsapp.com/channel/0029Vb69nLG23n3aRi3cpf2U', '_blank')">📢 Saluran Hanami</button>
+    <button id="logBtn" onclick="toggleLog()">📄 Show Log Activity</button>
   </div>
 
-  <script>
-    function toggleQRIS() {
-      const qris = document.getElementById("qris-img");
-      const toggleBtn = document.getElementById("qrisToggle");
-      const downloadBtn = document.getElementById("downloadBtn");
+  <img id="qris-img" class="qris-img" src="https://img1.pixhost.to/images/6619/613273636_fikadev.jpg" alt="QRIS">
 
-      if (qris.style.display === "block") {
-        qris.style.display = "none";
-        downloadBtn.style.display = "none";
-        toggleBtn.innerText = "📷 Tampilkan QRIS";
-      } else {
-        qris.style.display = "block";
-        downloadBtn.style.display = "inline-block";
-        toggleBtn.innerText = "❌ Sembunyikan QRIS";
-        qris.scrollIntoView({ behavior: "smooth" });
-      }
-T    }
+  <a id="downloadBtn" class="download-link" href="https://img1.pixhost.to/images/6619/613273636_fikadev.jpg" download="QRIS_FikaBot.jpg">
+    <button>⬇️ Download QRIS</button>
+  </a>
 
-    function copyText(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Nomor berhasil disalin: " + text);
-      });
+  <div class="runtime" id="datetime">🕒 Memuat waktu...</div>
+  <div class="runtime" id="battery">🔋 Memuat baterai...</div>
+
+  <div class="footer">
+    📌 Powered by Handi • Store: Hanami Digital • Website: <a href="https://handi-lann.privhandi.my.id" target="_blank">FikaBot</a>
+  </div>
+
+  <div class="log" id="logArea">🔍 Log aktif...</div>
+</div>
+
+<script>
+  const logArea = document.getElementById("logArea");
+
+  function log(msg, tag = "FikaBot") {
+    const time = new Date().toLocaleTimeString('id-ID');
+    const line = `<span style="color:lime;">[${time}]</span> <span style="color:cyan;">[${tag}]</span> ${msg}<br>`;
+    logArea.innerHTML += line;
+    logArea.scrollTop = logArea.scrollHeight;
+  }
+
+  function copy(id) {
+    const text = document.getElementById(id).innerText.split(" ")[0];
+    navigator.clipboard.writeText(text).then(() => {
+      log(`✅ Nomor ${id.toUpperCase()} disalin: ${text}`);
+    });
+  }
+
+  function toggleQRIS() {
+    const qris = document.getElementById("qris-img");
+    const btn = document.getElementById("qrisBtn");
+    const download = document.getElementById("downloadBtn");
+
+    if (qris.style.display === "block") {
+      qris.style.display = "none";
+      download.style.display = "none";
+      btn.innerText = "📷 Tampilkan QRIS";
+      log("❌ QRIS disembunyikan");
+    } else {
+      qris.style.display = "block";
+      download.style.display = "block";
+      btn.innerText = "❌ Sembunyikan QRIS";
+      log("📷 QRIS ditampilkan");
     }
-  </script>
+  }
+
+  function toggleLog() {
+    const logElement = document.getElementById("logArea");
+    if (logElement.style.display === "block") {
+      logElement.style.display = "none";
+      log("📄 Log disembunyikan");
+    } else {
+      logElement.style.display = "block";
+      log("📄 Log ditampilkan");
+    }
+  }
+
+  function updateDateTime() {
+    const now = new Date();
+    document.getElementById("datetime").innerText = `🕒 ${now.toLocaleString('id-ID')}`;
+  }
+
+  function checkBattery() {
+    if ('getBattery' in navigator) {
+      navigator.getBattery().then(battery => {
+        const percent = Math.floor(battery.level * 100);
+        const status = battery.charging ? "🔌 Mengisi" : "🔋 Tidak mengisi";
+        document.getElementById("battery").innerText = `🔋 ${percent}% (${status})`;
+        log(`🔋 Baterai: ${percent}% (${status})`);
+      });
+    } else {
+      document.getElementById("battery").innerText = "🔋 Tidak didukung browser.";
+      log("⚠️ Browser tidak mendukung Battery API", "System");
+    }
+  }
+
+  // Auto update setiap 60 detik
+  setInterval(() => {
+    updateDateTime();
+    checkBattery();
+  }, 60000);
+
+  // Load awal
+  updateDateTime();
+  checkBattery();
+</script>
 
 </body>
-</html>
-
+  </html>
